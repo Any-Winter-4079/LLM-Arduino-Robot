@@ -1,4 +1,4 @@
-# Arduino Robot
+# LLM Arduino Robot
 
 <div align="center">
   <img height="375" alt="Connections" src="images/original/robot-1.png">
