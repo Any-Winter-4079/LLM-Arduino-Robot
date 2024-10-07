@@ -6,27 +6,13 @@
 </div>
 
 ## Demos
+
 <div align="center">
-  <table>
-    <tr>
-      <th>move_motors.ino (test sketch)</th>
-      <th>move_servos.ino (test sketch)</th>
-    </tr>
-    <tr>
-      <td>
-        <picture>
-          <source srcset="https://github.com/user-attachments/assets/57d3474f-c6d3-45ea-b89b-50ce2faa5383" type="video/mp4">
-          <img src="https://github.com/user-attachments/assets/57d3474f-c6d3-45ea-b89b-50ce2faa5383" height="450" alt="move_motors.ino test sketch">
-        </picture>
-      </td>
-      <td>
-        <picture>
-          <source srcset="https://github.com/user-attachments/assets/ae52eb3b-29fb-4f1d-a0aa-84d0b2e7ebf1" type="video/mp4">
-          <img src="https://github.com/user-attachments/assets/ae52eb3b-29fb-4f1d-a0aa-84d0b2e7ebf1" height="450" alt="move_servos.ino test sketch">
-        </picture>
-      </td>
-    </tr>
-  </table>
+
+| move_motors.ino (test sketch) | move_servos.ino (test sketch) |
+|:---:|:---:|
+| <img src="https://github.com/user-attachments/assets/57d3474f-c6d3-45ea-b89b-50ce2faa5383" height="450"/> | <img src="https://github.com/user-attachments/assets/ae52eb3b-29fb-4f1d-a0aa-84d0b2e7ebf1" height="450"/> |
+
 </div>
 
 ## Description
