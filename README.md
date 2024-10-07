@@ -8,9 +8,9 @@
 ## Demo
 
 
-move_motors.ino | move_servos.ino
+move_motors.ino (test sketch) | move_servos.ino (test sketch)
 --|--
-<img src="https://github.com/user-attachments/assets/57d3474f-c6d3-45ea-b89b-50ce2faa5383" height="600"/>|<img src="https://github.com/user-attachments/assets/ae52eb3b-29fb-4f1d-a0aa-84d0b2e7ebf1" height="600"/>
+<img src="https://github.com/user-attachments/assets/57d3474f-c6d3-45ea-b89b-50ce2faa5383" height="450"/>|<img src="https://github.com/user-attachments/assets/ae52eb3b-29fb-4f1d-a0aa-84d0b2e7ebf1" height="450"/>
 
 
 ## Description
