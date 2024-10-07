@@ -7,11 +7,10 @@
 
 ## Demo
 
-https://github.com/user-attachments/assets/9abcde7d-0250-43e3-827f-4b33ee200f78
 
-
-https://github.com/user-attachments/assets/a86bf1a2-7732-4a76-9381-3efb0c0ac04d
-
+move_motors.ino | move_servos.ino
+--|--
+<img src="https://github.com/user-attachments/assets/57d3474f-c6d3-45ea-b89b-50ce2faa5383" height="600"/>|<img src="https://github.com/user-attachments/assets/ae52eb3b-29fb-4f1d-a0aa-84d0b2e7ebf1" height="600"/>
 
 
 ## Description
