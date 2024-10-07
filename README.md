@@ -1,8 +1,8 @@
 # Arduino Robot
 
 <div align="center">
-  <img height="375" alt="Connections" src="images/original/robot-1.png">
-  <img height="375" alt="Connections" src="images/original/robot-2.png">
+  <img height="475" alt="Connections" src="images/original/robot-1.png">
+  <img height="475" alt="Connections" src="images/original/robot-2.png">
 </div>
 
 ## Demos
@@ -11,7 +11,7 @@
 
 | move_motors.ino (test sketch) | move_servos.ino (test sketch) |
 |:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/57d3474f-c6d3-45ea-b89b-50ce2faa5383" width="250"/> | <img src="https://github.com/user-attachments/assets/ae52eb3b-29fb-4f1d-a0aa-84d0b2e7ebf1" width="250"/> |
+| <video src="https://github.com/user-attachments/assets/57d3474f-c6d3-45ea-b89b-50ce2faa5383" width="250"><video/> | <video src="https://github.com/user-attachments/assets/ae52eb3b-29fb-4f1d-a0aa-84d0b2e7ebf1" width="250"><video/> |
 
 </div>
 
