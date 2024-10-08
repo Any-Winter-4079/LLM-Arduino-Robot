@@ -36,7 +36,7 @@ const int OLED_RESET = -1;
 
 // Other constants
 const int NUM_ITERATIONS = 3;
-const int DELAY_TIME = 400;
+const int DELAY_TIME = 400;     // 0.4 seconds
 
 // Servo objects
 Servo up_down_servo;
@@ -49,15 +49,14 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 void updateDisplay(const String& message);
 void moveLeftRightServo(int angle);
 void moveUpDownServo(int angle);
-void stopRightMotor();
-void stopLeftMotor();
-void moveRightMotor(String direction, int speed);
-void moveLeftMotor(String direction, int speed);
+void stopMotors();
+void moveMotors(String leftDirection, String rightDirection, int speed);
 
 void setup() {
     Serial.begin(9600);
     initializeServos();
     initializeDisplay();
+    initializeMotors();
     performInitialMotions();
 }
 
@@ -91,6 +90,15 @@ void initializeDisplay() {
     delay(DELAY_TIME);
 }
 
+void initializeMotors() {
+    pinMode(RIGHT_MOTOR_SPEED, OUTPUT);
+    pinMode(RIGHT_MOTOR_DIR1, OUTPUT);
+    pinMode(RIGHT_MOTOR_DIR2, OUTPUT);
+    pinMode(LEFT_MOTOR_SPEED, OUTPUT);
+    pinMode(LEFT_MOTOR_DIR1, OUTPUT);
+    pinMode(LEFT_MOTOR_DIR2, OUTPUT);
+}
+
 void performInitialMotions() {
     // Center the eyes
     moveLeftRightServo(HORIZ_CENTER_ANGLE);
@@ -111,14 +119,17 @@ void performHorizontalMovement() {
     for (int i = 0; i < NUM_ITERATIONS; i++) {
         moveUpDownServo(VERT_CENTER_ANGLE);
         moveLeftRightServo(LEFT_ANGLE);
+        updateServoDisplay(LEFT_ANGLE, VERT_CENTER_ANGLE);
         delay(DELAY_TIME);
 
         moveUpDownServo(VERT_CENTER_ANGLE);
         moveLeftRightServo(RIGHT_ANGLE);
+        updateServoDisplay(RIGHT_ANGLE, VERT_CENTER_ANGLE);
         delay(DELAY_TIME);
     }
     moveUpDownServo(VERT_CENTER_ANGLE);
     moveLeftRightServo(HORIZ_CENTER_ANGLE);
+    updateServoDisplay(HORIZ_CENTER_ANGLE, VERT_CENTER_ANGLE);
     delay(DELAY_TIME);
 }
 
@@ -126,14 +137,17 @@ void performVerticalMovement() {
     for (int i = 0; i < NUM_ITERATIONS; i++) {
         moveLeftRightServo(HORIZ_CENTER_ANGLE);
         moveUpDownServo(UP_ANGLE);
+        updateServoDisplay(HORIZ_CENTER_ANGLE, UP_ANGLE);
         delay(DELAY_TIME);
 
         moveLeftRightServo(HORIZ_CENTER_ANGLE);
         moveUpDownServo(DOWN_ANGLE);
+        updateServoDisplay(HORIZ_CENTER_ANGLE, DOWN_ANGLE);
         delay(DELAY_TIME);
     }
     moveUpDownServo(VERT_CENTER_ANGLE);
     moveLeftRightServo(HORIZ_CENTER_ANGLE);
+    updateServoDisplay(HORIZ_CENTER_ANGLE, VERT_CENTER_ANGLE);
     delay(DELAY_TIME);
 }
 
@@ -141,23 +155,28 @@ void performDiagonalMovement() {
     for (int i = 0; i < NUM_ITERATIONS; i++) {
         moveUpDownServo(UP_ANGLE);
         moveLeftRightServo(LEFT_ANGLE);
+        updateServoDisplay(LEFT_ANGLE, UP_ANGLE);
         delay(DELAY_TIME);
 
         moveUpDownServo(DOWN_ANGLE);
         moveLeftRightServo(RIGHT_ANGLE);
+        updateServoDisplay(RIGHT_ANGLE, DOWN_ANGLE);
         delay(DELAY_TIME);
     }
     moveUpDownServo(VERT_CENTER_ANGLE);
     moveLeftRightServo(HORIZ_CENTER_ANGLE);
+    updateServoDisplay(HORIZ_CENTER_ANGLE, VERT_CENTER_ANGLE);
     delay(DELAY_TIME);
 
     for (int i = 0; i < NUM_ITERATIONS; i++) {
         moveUpDownServo(UP_ANGLE);
         moveLeftRightServo(RIGHT_ANGLE);
+        updateServoDisplay(RIGHT_ANGLE, UP_ANGLE);
         delay(DELAY_TIME);
 
         moveUpDownServo(DOWN_ANGLE);
         moveLeftRightServo(LEFT_ANGLE);
+        updateServoDisplay(LEFT_ANGLE, DOWN_ANGLE);
         delay(DELAY_TIME);
     }
 }
@@ -173,55 +192,63 @@ void updateDisplay(const String& message) {
 void moveLeftRightServo(int angle) {
     angle = constrain(angle, RIGHT_ANGLE, LEFT_ANGLE);
     left_right_servo.write(angle);
-    updateDisplay("AngleLR:" + String(angle));
 }
 
 void moveUpDownServo(int angle) {
     angle = constrain(angle, DOWN_ANGLE, UP_ANGLE);
     up_down_servo.write(angle);
-    updateDisplay("AngleUD:" + String(angle));
 }
 
-void stopRightMotor() {
+void stopMotors() {
     digitalWrite(RIGHT_MOTOR_DIR1, LOW);
     digitalWrite(RIGHT_MOTOR_DIR2, LOW);
-}
-
-void stopLeftMotor() {
     digitalWrite(LEFT_MOTOR_DIR1, LOW);
     digitalWrite(LEFT_MOTOR_DIR2, LOW);
+    analogWrite(RIGHT_MOTOR_SPEED, 0);
+    analogWrite(LEFT_MOTOR_SPEED, 0);
 }
 
-void moveRightMotor(String direction, int speed) {
-    if (direction == "10") {
-        digitalWrite(RIGHT_MOTOR_DIR1, HIGH);
-        digitalWrite(RIGHT_MOTOR_DIR2, LOW);
-    } else if (direction == "01") {
-        digitalWrite(RIGHT_MOTOR_DIR1, LOW);
-        digitalWrite(RIGHT_MOTOR_DIR2, HIGH);
-    } else {
-        digitalWrite(RIGHT_MOTOR_DIR1, LOW);
-        digitalWrite(RIGHT_MOTOR_DIR2, LOW);
-    }
-    analogWrite(RIGHT_MOTOR_SPEED, speed);
-    delay(SHORT_DELAY);
-    stopRightMotor();
-}
-
-void moveLeftMotor(String direction, int speed) {
-    if (direction == "10") {
+void moveMotors(String leftDirection, String rightDirection, int speed) {
+    // Set left motor direction
+    if (leftDirection == "10") {
         digitalWrite(LEFT_MOTOR_DIR1, HIGH);
         digitalWrite(LEFT_MOTOR_DIR2, LOW);
-    } else if (direction == "01") {
+    } else if (leftDirection == "01") {
         digitalWrite(LEFT_MOTOR_DIR1, LOW);
         digitalWrite(LEFT_MOTOR_DIR2, HIGH);
     } else {
         digitalWrite(LEFT_MOTOR_DIR1, LOW);
         digitalWrite(LEFT_MOTOR_DIR2, LOW);
     }
+
+    // Set right motor direction
+    if (rightDirection == "10") {
+        digitalWrite(RIGHT_MOTOR_DIR1, HIGH);
+        digitalWrite(RIGHT_MOTOR_DIR2, LOW);
+    } else if (rightDirection == "01") {
+        digitalWrite(RIGHT_MOTOR_DIR1, LOW);
+        digitalWrite(RIGHT_MOTOR_DIR2, HIGH);
+    } else {
+        digitalWrite(RIGHT_MOTOR_DIR1, LOW);
+        digitalWrite(RIGHT_MOTOR_DIR2, LOW);
+    }
+
+    // Set motor speeds
     analogWrite(LEFT_MOTOR_SPEED, speed);
+    analogWrite(RIGHT_MOTOR_SPEED, speed);
+
     delay(SHORT_DELAY);
-    stopLeftMotor();
+    stopMotors();
+}
+
+void updateServoDisplay(int leftRightAngle, int upDownAngle) {
+    display.clearDisplay();
+    display.setFont(&FreeMono9pt7b);
+    display.setCursor(0,15);
+    display.print("LR:" + String(leftRightAngle));
+    display.setCursor(0,30);
+    display.print("UD:" + String(upDownAngle));
+    display.display();
 }
 
 void processReceivedData(const String& received_data) {
@@ -273,8 +300,13 @@ void processMotorAndServoCommands(const String& received_data) {
         start = end + 1;
     }
 
-    if (leftMD_str != "") moveLeftMotor(leftMD_str, motorsS != -1 ? motorsS : 0);
-    if (rightMD_str != "") moveRightMotor(rightMD_str, motorsS != -1 ? motorsS : 0);
+    if (leftMD_str != "" && rightMD_str != "") {
+        moveMotors(leftMD_str, rightMD_str, motorsS != -1 ? motorsS : 0);
+    }
     if (angleVP != -1) moveUpDownServo(angleVP);
     if (angleHP != -1) moveLeftRightServo(angleHP);
+    if (angleVP != -1 || angleHP != -1) {
+        updateServoDisplay(angleHP != -1 ? angleHP : left_right_servo.read(),
+                           angleVP != -1 ? angleVP : up_down_servo.read());
+    }
 }
