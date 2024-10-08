@@ -9,11 +9,17 @@
 
 <div align="center">
 
-| move_motors.ino (test sketch with predefined movement) | move_servos.ino (test sketch with predefined movement) | move_motors.py (test script with user-defined movement) | move_servos.py (test script with user-defined movement) |
-|:---:|:---:|:---:|:---:|
+|                              move_motors.ino (test sketch with predefined movement)                               |                              move_servos.ino (test sketch with predefined movement)                               |                              move_motors.py (test script with user-defined movement)                              |                              move_servos.py (test script with user-defined movement)                              |
+| :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: |
 | <video src="https://github.com/user-attachments/assets/57d3474f-c6d3-45ea-b89b-50ce2faa5383" width="250"><video/> | <video src="https://github.com/user-attachments/assets/ae52eb3b-29fb-4f1d-a0aa-84d0b2e7ebf1" width="250"><video/> | <video src="https://github.com/user-attachments/assets/dd964891-c4ec-46ee-a740-5d1aab85729a" width="250"><video/> | <video src="https://github.com/user-attachments/assets/68809543-e159-4048-9134-09e9c8de21c9" width="250"><video/> |
 
 </div>
+
+## Guides with Diagrams
+
+- [Connections](guides/00_connections.md)
+- [Components](guides/01_components.md)
+- [Chassis and motors](guides/02_chassis_and_motors.md)
 
 ## Description
 
@@ -85,12 +91,6 @@ AI Processing:
 - LMM (Large Multimodal Model) to describe the view in a context-relevant way
 - LLM (Large Language Model) to decide what to speak and which parts to move
 
-## Guides with Diagrams
-
-- [Connections](guides/00_connections.md)
-- [Components](guides/01_components.md)
-- [Chassis and motors](guides/02_chassis_and_motors.md)
-
 ## Setup
 
 ### Computer
@@ -98,26 +98,33 @@ AI Processing:
 Clone (and cd into) the repository:
 
 ```
-git clone https://github.com/Any-Winter-4079/Arduino-Robot.git
-cd Arduino-Robot
+git clone https://github.com/Any-Winter-4079/LLM-Arduino-Robot.git
+cd LLM-Arduino-Robot
 ```
 
 Create a virtual environment:
 
 ```
-python -m venv venv
+python3.11 -m venv venv
 ```
 
 Activate the virtual environment:
 
-- Windows: `venv\Scripts\activate`
-- macOS/Linux: `source venv/bin/activate`
+- macOS: `source venv/bin/activate`
+
+Upgrade pip:
+
+`pip install --upgrade pip`
 
 Install the dependencies:
 
 ```
 pip install -r requirements.txt
 ```
+
+Note `requirements.txt` has been automatically built using: `pip freeze > requirements.txt`
+
+Optionally, you can manually install packages from `pip-install.txt`, which might be recommended if you do not have an M-series Mac as some installs may need another flavor for other machines (e.g. using `tensorflow` rather than `tensorflow-macos` and `tensorflow-metal`)
 
 ### Robot
 

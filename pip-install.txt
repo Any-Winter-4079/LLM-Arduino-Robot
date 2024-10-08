@@ -1,0 +1,10 @@
+pip install tensorflow-macos
+pip install tensorflow-metal
+pip install requests
+pip install websockets
+pip install pydub
+pip install deepface
+pip install ultralytics
+pip uninstall torch torchvision torchaudio
+pip install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
+pip install transformers
