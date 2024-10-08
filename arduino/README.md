@@ -5,6 +5,6 @@
 - `production.ino` is the code to be run by the the Arduino in production.
 - Remember to unplug the Rx cable before uploading any of these sketches (and replug it after uploading).
 - Due to friction and robot weight, speeds below 135 do not generate enough torque to move the robot (but it may be slightly different for yours).
-- `DOWN_ANGLE`, `UP_ANGLE`, `VERT_CENTER_ANGLE`, `LEFT_ANGLE`, `RIGHT_ANGLE`, `HORIZ_CENTER_ANGLE` might also be different for your robot, i.e.
+- `DOWN_ANGLE`, `UP_ANGLE`, `VERT_CENTER_ANGLE`, `LEFT_ANGLE`, `RIGHT_ANGLE`, `HORIZ_CENTER_ANGLE` might also be different for your robot, e.g.
   `const int DOWN_ANGLE = 50;`
   defines the minimum angle for the up-down servo not to collide with the ESP32-CAMs.
