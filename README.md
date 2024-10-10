@@ -9,7 +9,7 @@
 
 <div align="center">
 
-|                              Detect sound + send audio + run STT (speech-to-text)                               |                              move_motors.ino (test sketch with predefined movement)                               |                              move_servos.ino (test sketch with predefined movement)                               |                              move_motors.py (test script with user-defined movement)                              |                              move_servos.py (test script with user-defined movement)                              |
+|                               Detect sound + send audio + run STT (speech-to-text)                                |                              move_motors.ino (test sketch with predefined movement)                               |                              move_servos.ino (test sketch with predefined movement)                               |                              move_motors.py (test script with user-defined movement)                              |                              move_servos.py (test script with user-defined movement)                              |
 | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: |
 | <video src="https://github.com/user-attachments/assets/294112ee-3b57-4eac-b4e6-81dfec740eac" width="250"><video/> | <video src="https://github.com/user-attachments/assets/57d3474f-c6d3-45ea-b89b-50ce2faa5383" width="250"><video/> | <video src="https://github.com/user-attachments/assets/ae52eb3b-29fb-4f1d-a0aa-84d0b2e7ebf1" width="250"><video/> | <video src="https://github.com/user-attachments/assets/dd964891-c4ec-46ee-a740-5d1aab85729a" width="250"><video/> | <video src="https://github.com/user-attachments/assets/68809543-e159-4048-9134-09e9c8de21c9" width="250"><video/> |
 
@@ -110,21 +110,30 @@ python3.11 -m venv venv
 
 Activate the virtual environment:
 
-- macOS: `source venv/bin/activate`
+- macOS:
+
+```
+source venv/bin/activate
+```
 
 Upgrade pip:
 
-`pip install --upgrade pip`
+```
+pip install --upgrade pip
+```
 
-Install the dependencies:
+Install all of the dependencies:
 
 ```
 pip install -r requirements.txt
 ```
 
-Note `requirements.txt` has been automatically built using: `pip freeze > requirements.txt`
+> **Note:** `requirements.txt` is generated via: `pip freeze > requirements.txt` so you'll see dependencies of dependencies.
 
-Optionally, you can manually install packages from `pip-install.txt`, which might be recommended if you do not have an M-series Mac as some installs may need another flavor for other machines (e.g. using `tensorflow` rather than `tensorflow-macos` and `tensorflow-metal`)
+Or manually install the main dependencies using the `venv-pip-install.txt` commands, which might be recommended if you do not have an M-series (M1 / M2 / etc.) Mac as some installs may need another flavor for your machine (e.g. you may want to use `tensorflow` rather than `tensorflow-macos` and `tensorflow-metal` or skip the nightly version of Pytorch).
+
+Additionally, `tts-constraints.txt` makes installing coqui-ai's TTS easier by fixing dependency versions.
+So, if `pip install TTS` hangs, try `pip install TTS -c tts-constraints.txt`
 
 ### Robot
 
