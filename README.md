@@ -30,7 +30,7 @@ To run the project:
 - `arduino/`: Arduino test and production sketches
 - `esp32/`: ESP32 (-CAMs, -WROVER) test and production sketches
 - `computer/`: Computer test and production scripts
-- `requirements.txt`: Dependencies to install to run the robot
+- `requirements.txt`: Project dependencies
 
 To help understand/use the project:
 
@@ -38,10 +38,11 @@ To help understand/use the project:
 - `fritzing/`: Cable connections in Fritzing
 - `guides/`: Step-by-step guides for the contruction of the robot
 - `images/`: Images used in the guides
-- `videos/`: Videos used in the guides
 - `LICENSE`: Project license
 - `README.md`: Overview of the project
-- `.gitignore`: Files not pushed for being temporary, private, or unnecessary
+- `several-esp32-model-pinouts.txt`: Collection of tested ESP32-CAM pinouts (to use depending on own camera in `esp32/cam/XXXX-production.ino`)
+- `venv-pip-install.txt`: Collection of `pip install` commands for manual / machine-dependent dependency installation
+- `tts-constraints.txt`: Fixed TTS dependencies versions for quicker installation
 
 To help improve the docs on the robot-building process:
 
