@@ -45,7 +45,7 @@ To help understand/use the project:
 
 To help improve the docs on the robot-building process:
 
-- `tools/`: Shell scripts to compress videos, etc. before pushing to remote
+- `tools/`: Shell scripts to compress videos, etc. before pushing to GitHub
 
 ## Technical Overview
 
@@ -57,9 +57,9 @@ Vision:
 
 Audio:
 
-- Input: KY-037 sound sensor (adjustable by potentiometer) triggers INMP441 I2S microphone for RECORDING_DURATION_MS (e.g., 5000 ms) audio recording. ESP32-WROVER sends this to computer via web sockets. Recording progress -e.g. Listening (3s)...- visualized on OLED SSD1306 I2C 128x64 screen.
+- Input: KY-037 sound sensor (adjustable by potentiometer) triggers INMP441 I2S microphone for RECORDING_DURATION_MS (e.g., 5000 ms) audio recording. ESP32-WROVER sends this to computer via web sockets. Recording progress -e.g. Listening (3s)...- visualized on OLED SSD1306 I2C 128x64 screen
 
-- Output: Speaker with MAX98357A amplifier for audio playback. Audio (from Coqui.ai's text-to-speech conversion) sent from computer, received by ESP32-WROVER, and forwarded to MAX98357A.
+- Output: Speaker with MAX98357A amplifier for audio playback. Audio (from Coqui.ai's text-to-speech conversion) sent from computer, received by ESP32-WROVER, and forwarded to MAX98357A
 
 Mobility:
 
@@ -95,6 +95,8 @@ AI Processing:
 
 ### Computer
 
+On the computer side:
+
 Clone (and cd into) the repository:
 
 ```
@@ -122,7 +124,7 @@ Upgrade pip:
 pip install --upgrade pip
 ```
 
-Install all of the dependencies:
+And install all of the dependencies:
 
 ```
 pip install -r requirements.txt
@@ -137,11 +139,11 @@ So, if `pip install TTS` hangs, try `pip install TTS -c tts-constraints.txt`
 
 ### Robot
 
-Install the Arduino IDE
+On the robot side, install the Arduino IDE.
 
-Install esp32 by espressif into Boards Manager
+Install esp32 by espressif into Boards Manager.
 
-Add:
+And add:
 
 - https://github.com/me-no-dev/AsyncTCP
 - https://github.com/me-no-dev/ESPAsyncWebServer
@@ -150,7 +152,7 @@ into `XXXX/Arduino/libraries` (e.g. `Users/you/Documents/Arduino/libraries/` on 
 
 #### ESP32
 
-To allow your ESP32s to communicate with your computer in your local network, replace:
+On the ESP32 side, to allow them to communicate with your computer in your local network, replace:
 
 ```
 const char* ssid1 = "****";
@@ -159,7 +161,7 @@ IPAddress staticIP1(*, *, *, *);
 IPAddress gateway1(*, *, *, *);
 ```
 
-with your primary network (e.g. your home Wi-Fi) details
+with your primary network (e.g. your home Wi-Fi) details.
 
 Replace:
 
@@ -170,7 +172,7 @@ IPAddress staticIP2(*, *, *, *);
 IPAddress gateway2(*, *, *, *);
 ```
 
-with your secondary (backup) network (e.g. phone hotspot)
+with your secondary (backup) network (e.g. phone hotspot).
 
 And in the case of the ESP32-WROVER, replace:
 
@@ -178,7 +180,7 @@ And in the case of the ESP32-WROVER, replace:
 const char* websocket_server_host1 = "*.*.*.*";
 ```
 
-with your computer IP, when connected to your primary network
+with your computer IP, when connected to your primary network.
 
 And:
 
@@ -186,11 +188,11 @@ And:
 const char* websocket_server_host2 = "*.*.*.*";
 ```
 
-with your computer IP, when connected to your backup network
+with your computer IP, when connected to your backup network.
 
 > **Note:** Make sure to provide unique IPs to each ESP32 (e.g. `192.168.1.180` and `192.168.1.181` for your ESP32-CAMs and `192.168.1.182` for your ESP32-WROVER, with your computer at `192.168.1.174`).
 
-Then, for each of your 2 cameras (e.g. AiThinker, M5Stack Wide) and WROVER (e.g. Freenove), flash (through their USB type C or VCC/GND/TX/RX) `esp32/XXXX/production.ino` (e.g. `esp32/m5stackwide/production.ino`) with the following `Tools` setup:
+Finally, for each of your 2 cameras (e.g. AiThinker, M5Stack Wide) and WROVER (e.g. Freenove), flash (through their USB type C or VCC/GND/TX/RX) the corresponding production sketch (i.e. `esp32/cam/m5stackwide-production.ino`, `esp32/cam/aithinker-production.ino` or `esp32/wrover/production.ino`) with the following `Tools` setup:
 
 ```
 Board: "ESP32 Dev Module"
@@ -211,7 +213,7 @@ Upload Speed: "115200"
 
 #### Arduino Uno
 
-Flash (through its USB type B) `arduino/production.ino` with the RX pin temporarily disconnected
+Lastly, on the Arduino side, flash (through its USB type B) `arduino/production.ino` with the RX pin temporarily disconnected.
 
 ## Usage
 
