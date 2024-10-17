@@ -96,7 +96,7 @@ AI Processing:
 
 ### Computer
 
-On the computer side:
+On the computer:
 
 Clone (and cd into) the repository:
 
@@ -140,29 +140,31 @@ So, if `pip install TTS` hangs, try `pip install TTS -c tts-constraints.txt`
 
 ### Robot
 
-On the robot side, install the Arduino IDE.
+For the robot, install the Arduino IDE (for example, v2.3.2) on the computer, and then:
 
-Install esp32 by espressif into Boards Manager.
+Install esp32 (for example, v2.0.11) by espressif in the Boards Manager (left-side menu).
 
-And add:
+Install ArduinoWebsockets (for example, v0.5.4) from in the Library Manager (left-side menu).
+
+And then add the following GitHub libraries:
 
 - https://github.com/me-no-dev/AsyncTCP
 - https://github.com/me-no-dev/ESPAsyncWebServer
 
-into `XXXX/Arduino/libraries` (e.g. `Users/you/Documents/Arduino/libraries/` on macOS) for an async web server to send the images to your computer (to go from 1 fps to 37 fps at (320x240) resolution)
+into `XXXX/Arduino/libraries` (for example, `Users/you/Documents/Arduino/libraries/` on macOS) for an async web server to send the images to the computer (to go from 1 fps to 37 fps at (320x240) resolution)
 
 #### ESP32
 
 On the ESP32 side, to allow them to communicate with your computer in your local network, replace:
 
 ```
-const char* ssid1 = "****";
-const char* password1 = "****";
-IPAddress staticIP1(*, *, *, *);
-IPAddress gateway1(*, *, *, *);
+const char* ssid1 = "****"; // Your network's name
+const char* password1 = "****"; // Your network's password
+IPAddress staticIP1(*, *, *, *); // Your ESP32's (desired) IP on the network
+IPAddress gateway1(*, *, *, *); // Your router's local gateway IP
 ```
 
-with your primary network (e.g. your home Wi-Fi) details.
+with your primary network (e.g. your home Wi-Fi) details in `esp32/cam/XXXX-production.ino` and `esp32/wrover/production.ino`.
 
 Replace:
 
@@ -173,7 +175,7 @@ IPAddress staticIP2(*, *, *, *);
 IPAddress gateway2(*, *, *, *);
 ```
 
-with your secondary (backup) network (e.g. phone hotspot).
+with your secondary (backup) network (e.g. phone hotspot) details.
 
 And in the case of the ESP32-WROVER, replace:
 
@@ -181,7 +183,7 @@ And in the case of the ESP32-WROVER, replace:
 const char* websocket_server_host1 = "*.*.*.*";
 ```
 
-with your computer IP, when connected to your primary network.
+with your primary network's **computer** IP (in `esp32/wrover/production.ino`).
 
 And:
 
@@ -189,11 +191,11 @@ And:
 const char* websocket_server_host2 = "*.*.*.*";
 ```
 
-with your computer IP, when connected to your backup network.
+with your backup network's **computer** IP.
 
-> **Note:** Make sure to provide unique IPs to each ESP32 (e.g. `192.168.1.180` and `192.168.1.181` for your ESP32-CAMs and `192.168.1.182` for your ESP32-WROVER, with your computer at `192.168.1.174`).
+> **Note:** Make sure to request unique IPs for each ESP32 (e.g. `192.168.1.180` and `192.168.1.181` for your ESP32-CAMs and `192.168.1.182` for your ESP32-WROVER, with your computer at `192.168.1.174`).
 
-Finally, for each of your 2 cameras (e.g. AiThinker, M5Stack Wide) and WROVER (e.g. Freenove), flash (through their USB type C or VCC/GND/TX/RX) the corresponding production sketch (i.e. `esp32/cam/m5stackwide-production.ino`, `esp32/cam/aithinker-production.ino` or `esp32/wrover/production.ino`) with the following `Tools` setup:
+Finally, for each of your 2 cameras (e.g. AiThinker, M5Stack Wide) and WROVER (e.g. Freenove), flash (through their USB type C or VCC/GND/TX/RX) the corresponding (modified) production sketch (i.e. `esp32/cam/m5stackwide-production.ino`, `esp32/cam/aithinker-production.ino` or `esp32/wrover/production.ino`) with the following Arduino IDE `Tools` setup:
 
 ```
 Board: "ESP32 Dev Module"
