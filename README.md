@@ -142,9 +142,11 @@ So, if `pip install TTS` hangs, try `pip install TTS -c tts-constraints.txt`
 
 For the robot, install the Arduino IDE (for example, v2.3.2) on the computer, and then:
 
-Install esp32 (for example, v2.0.11) by espressif in the Boards Manager (left-side menu).
+Install esp32 (for example, v2.0.11) by espressif from the Boards Manager (left-side menu).
 
-Install ArduinoWebsockets (for example, v0.5.4) from in the Library Manager (left-side menu).
+Install ArduinoWebsockets (for example, v0.5.4) from the Library Manager (left-side menu).
+
+Install FreeRTOS (for example, v11.1.0-3) from the Library Manager (left-side menu).
 
 And then add the following GitHub libraries:
 
