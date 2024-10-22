@@ -125,7 +125,7 @@ Upgrade pip:
 pip install --upgrade pip
 ```
 
-And install all of the dependencies:
+Install all of the dependencies:
 
 ```
 pip install -r requirements.txt
@@ -137,6 +137,20 @@ Or manually install the main dependencies using the `venv-pip-install.txt` comma
 
 Additionally, `tts-constraints.txt` makes installing coqui-ai's TTS easier by fixing dependency versions.
 So, if `pip install TTS` hangs, try `pip install TTS -c tts-constraints.txt`
+
+And finally, get and build `llama-cpp` to run the LLM brain:
+
+```
+cd computer/llm
+git clone https://github.com/ggerganov/llama.cpp
+make -j 8
+```
+
+Be on the same commit if you want to:
+
+`git checkout 6b844735`
+
+Download your HuggingFace models into `computer/llm/hf_models/`
 
 ### Robot
 

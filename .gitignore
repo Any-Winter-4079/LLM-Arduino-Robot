@@ -6,3 +6,7 @@
 venv/
 # Ignore videos
 videos/
+# Ignore llama.cpp
+computer/llm/llama.cpp/
+# Ignore hf_models
+computer/llm/hf_models/
