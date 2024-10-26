@@ -1,8 +1,7 @@
 # LLM Arduino Robot
 
 <div align="center">
-  <img height="375" alt="Connections" src="images/original/robot-1.png">
-  <img height="375" alt="Connections" src="images/original/robot-2.png">
+    <img height="375" alt="Connections" src="images/original/robot-3.png">
 </div>
 
 ## Demos
@@ -148,9 +147,50 @@ make -j 8
 
 Be on the same commit if you want to:
 
-`git checkout 6b844735`
+```
+git checkout 6b844735
+```
+
+Install the `llama-cpp` dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+And re-install nightly torch if `llama.cpp` changed the version and you want to use torch nightly:
+
+```
+pip uninstall torch torchvision torchaudio
+pip install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
+```
 
 Download your HuggingFace models into `computer/llm/hf_models/`
+
+Ensure the output directory exists, for example:
+
+```
+mkdir -p models/meta-llama/Llama-3.2-1B
+```
+
+Convert the downloaded model to `gguf`, for example:
+
+```
+python convert_hf_to_gguf.py ../hf_models/meta-llama/Llama-3.2-1B --outfile models/meta-llama/Llama-3.2-1B/
+```
+
+And quantize the model if appropriate, for example:
+
+```
+./llama-quantize models/meta-llama/Llama-3.2-1B/Llama-3.2-1B-F16.gguf models/meta-llama/Llama-3.2-1B/Llama-3.2-1B-Q4_K_M.gguf Q4_K_M
+```
+
+Using:
+
+```
+./llama-quantize -h
+```
+
+to find the allowed quantization types
 
 ### Robot
 
@@ -174,10 +214,12 @@ into `XXXX/Arduino/libraries` (for example, `Users/you/Documents/Arduino/librari
 On the ESP32 side, to allow them to communicate with your computer in your local network, replace:
 
 ```
-const char* ssid1 = "****"; // Your network's name
-const char* password1 = "****"; // Your network's password
-IPAddress staticIP1(*, *, *, *); // Your ESP32's (desired) IP on the network
-IPAddress gateway1(*, *, *, *); // Your router's local gateway IP
+
+const char* ssid1 = "\*\*\*\*"; // Your network's name
+const char* password1 = "\*_\*\*"; // Your network's password
+IPAddress staticIP1(_, _, _, _); // Your ESP32's (desired) IP on the network
+IPAddress gateway1(_, _, _, \*); // Your router's local gateway IP
+
 ```
 
 with your primary network (e.g. your home Wi-Fi) details in `esp32/cam/XXXX-production.ino` and `esp32/wrover/production.ino`.
@@ -185,10 +227,12 @@ with your primary network (e.g. your home Wi-Fi) details in `esp32/cam/XXXX-prod
 Replace:
 
 ```
-const char* ssid2 = "****";
-const char* password2 = "****";
-IPAddress staticIP2(*, *, *, *);
-IPAddress gateway2(*, *, *, *);
+
+const char* ssid2 = "\*\*\*\*";
+const char* password2 = "\*_\*\*";
+IPAddress staticIP2(_, _, _, _);
+IPAddress gateway2(_, _, _, \*);
+
 ```
 
 with your secondary (backup) network (e.g. phone hotspot) details.
@@ -196,7 +240,9 @@ with your secondary (backup) network (e.g. phone hotspot) details.
 And in the case of the ESP32-WROVER, replace:
 
 ```
-const char* websocket_server_host1 = "*.*.*.*";
+
+const char* websocket_server_host1 = "*._._.\*";
+
 ```
 
 with your primary network's **computer** IP (in `esp32/wrover/production.ino`).
@@ -204,7 +250,9 @@ with your primary network's **computer** IP (in `esp32/wrover/production.ino`).
 And:
 
 ```
-const char* websocket_server_host2 = "*.*.*.*";
+
+const char* websocket_server_host2 = "*._._.\*";
+
 ```
 
 with your backup network's **computer** IP.
@@ -214,6 +262,7 @@ with your backup network's **computer** IP.
 Finally, for each of your 2 cameras (e.g. AiThinker, M5Stack Wide) and WROVER (e.g. Freenove), flash (through their USB type C or VCC/GND/TX/RX) the corresponding (modified) production sketch (i.e. `esp32/cam/m5stackwide-production.ino`, `esp32/cam/aithinker-production.ino` or `esp32/wrover/production.ino`) with the following Arduino IDE `Tools` setup:
 
 ```
+
 Board: "ESP32 Dev Module"
 Port: "/dev/cu.usbserial-110" (select your own)
 CPU Frequency: "240MHz (WiFi/BT)"
@@ -228,6 +277,7 @@ Arduino Runs On: "Core 1"
 Partition Scheme: "Huge APP (3MB No OTA/1MB SPIFFS)"
 PSRAM: "Enabled"
 Upload Speed: "115200"
+
 ```
 
 #### Arduino Uno
@@ -241,3 +291,7 @@ Lastly, on the Arduino side, flash (through its USB type B) `arduino/production.
 ## License
 
 [Missing license]
+
+```
+
+```
