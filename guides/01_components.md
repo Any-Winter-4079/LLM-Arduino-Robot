@@ -1,66 +1,66 @@
 For the construction of the Arduino robot prototype, the following electronic devices are used:
 
-- 1x 7.4V rechargeable battery -in this case, an ELEGOO micro-USB rechargeable battery- for motors, motor controller, Arduino, servos, ESP32-WROVER, sound detector, microphone, amplifier, speaker, and OLED display.
-- 4x 1.2V rechargeable AA batteries (with series battery holder and switch) -to provide 4.8V to the ESP32-CAMs, one for each robot eye.
-- 2x Adjustable buck converters with potentiometer -to reduce to 5V and 3.3V, for various components that don't accept 7.4V directly.
-- 1x 2-pin switch -to easily turn the robot on and off, noting that another switch would be needed if one wasn't available in the battery holder (since ESP32-CAMs have separate power supply to avoid voltage spikes during motor and servo use).
-- 1x 400-pin breadboard -for creating 2 power lines, at 7.4V (directly from battery) and 5V (from a voltage reducer).
-- 2x 170-pin breadboards -one for sound input (KY-037, INMP441), in the front of the robot, and another for output (MAX98357A), in its rear.
-- Male-to-male, male-to-female, and female-to-female Dupont cables for robot wiring.
-- 1x Arduino Uno Rev3 -to send commands received from ESP32-WROVER to the motor controller (for wheel movement) and/or servos (for eye movement).
-- 1x DC barrel jack (DC power jack) -to power the Arduino with 7.4V, internally regulated by Arduino to 5V.
-- 1x L298N motor controller -to receive direction commands from Arduino (forward rotation, backward rotation, or stop) and intensity (rotation speed) to send to motors.
-- 2x SG-90 servos -to move the eyes horizontally and vertically -according to angles received from Arduino Uno.
-- 2x ESP32-CAM -in this case, Ai-Thinker and M5Stack Wide, although both could have been the same model- to establish a web server responsible for sending frames on demand to the computer (where the robot's brain runs).
-- 1x ESP32-WROVER (or ESP32-CAM without camera use) -in this case, 1x Freenove ESP32-WROVER CAM Board- to manage movement command reception (to send to Arduino Uno) and audio sending (to computer) and reception (from computer).
-- 2x OV2640 -one per ESP32-CAM- with 160-degree fisheye lens, to allow eye movement (with embedded camera) using a 75mm cable (longer than the original 21mm cable).
-- 1x 128x64 SSD1306 I2C OLED display -to show information such as WiFi network from which IP address is acquired, useful in case of multiple possibilities, or robot's internal state ('Listening…', 'Thinking…').
-- 1x KY-037 sound detection microphone -to start sending audio to computer when a certain sound threshold is exceeded.
-- 1x INMP441 I2S microphone -to capture said sound, and be sent by ESP32-WROVER to computer to determine, using Speech-to-Text, if it's noise or a natural language phrase, and in that case, send it to the language model.
-- 1x MAX98357A I2S amplifier -to receive audio sent to ESP32-WROVER from computer, referring to language model response converted to audio using Text-to-Speech and forwarded by this to the amplifier.
-- 1x 3W 8Ω speaker -for playing audio received by the amplifier.
-- 2x 3-6V DC motors with gearbox -in this case, with Dupont termination- to attach to each of the front wheels to direct robot movement.
+- 1x 7.4V rechargeable battery - in this case, an ELEGOO micro-USB rechargeable battery - for powering motors, motor controller, Arduino, servos, ESP32-WROVER, sound detector, microphone, amplifier, speaker, and OLED display
+- 4x 1.2V rechargeable AA batteries - with a series battery holder and switch - to provide 4.8V to the ESP32-CAMs, one for each robot eye
+- 2x adjustable buck converters - with potentiometer adjustment - to reduce voltage to 5V and 3.3V for components that don't accept 7.4V directly
+- 1x 2-pin switch - to control the robot's main power (noting that a second switch would be needed if the battery holder lacks one, since the ESP32-CAMs use separate power to avoid voltage spikes during motor and servo operation)
+- 1x 400-pin breadboard - to create two power distribution lines: 7.4V (direct from the battery) and 5V (from the buck converter)
+- 2x 170-pin breadboards - one for sound input components (the KY-037 and INMP441) at the front, and one for sound output components (the MAX98357A) at the rear
+- Male-to-male, male-to-female, and female-to-female Dupont cables - for all wiring connections
+- 1x Arduino Uno Rev3 - to send the commands received from the ESP32-WROVER to the motor controller (for wheel movement) and to the servos (for eye movement)
+- 1x DC barrel jack - to supply 7.4V to the Arduino, which internally regulates it to 5V
+- 1x L298N motor controller - to receive both direction commands (forward rotation, backward rotation, or stop) and intensity commands (rotation speed) from the Arduino to control the motors
+- 2x SG-90 servos - to move the eyes horizontally and vertically based on angle commands from the Arduino
+- 2x ESP32-CAM - using Ai-Thinker and M5Stack Wide models (though both could be the same model) - to run web servers that send camera frames to the computer running the robot's brain
+- 1x ESP32-WROVER - using a Freenove ESP32-WROVER CAM Board - to handle movement command reception (to send to the Arduino) and two-way audio communication with the computer
+- 2x OV2640 cameras - one per ESP32-CAM - with 160-degree fisheye lenses and 75mm cables (longer than the original 21mm cables) to enable eye movement with embedded cameras
+- 1x 128x64 SSD1306 I2C OLED display - to show system information such as the connected WiFi network and the robot's internal state ('Listening...', 'Thinking...')
+- 1x KY-037 sound detection microphone - to trigger audio transmission to the computer when sound exceeds a threshold
+- 1x INMP441 I2S microphone - to capture audio for the ESP32-WROVER to send to the computer, where Speech-to-Text determines if it's noise or speech to be processed by the language model
+- 1x MAX98357A I2S amplifier - to process the audio sent to the ESP32-WROVER from the computer (containing the language model's response converted by Text-to-Speech)
+- 1x 3W 8Ω speaker - to play the processed audio from the amplifier
+- 2x 3-6V DC motors with gearboxes - with Dupont termination - to drive the front wheels for robot movement
 
-Additionally, the following materials are used for chassis construction, component mounting, and eye manufacturing:
+For chassis construction, component mounting, and eye fabrication:
 
-- 2x Wheels -1x for each gearbox motor.
-- 2x Metal motor mounts -to screw each motor to chassis with 2 horizontal and 2 vertical screws.
-- 1x ~3cm Ø caster wheel -to place in the central rear of robot.
-- 1x ~40x40x0.3cm wood or particleboard -for chassis.
-- 1x ~11x4x0.8cm wooden board -for support pieces in vertical and horizontal eye movement.
-- ~4cm length M3 hexagonal spacers -to separate different chassis levels.
-- ~1.5cm length M3 screws -both headed and double-threaded (i.e., headless).
-- M3 washers.
-- Regular and self-locking M3 nuts.
-- 2x M2 screws - to attach SSD1306 I2C OLED display to chassis.
-- 2x M2 nuts - to secure display to chassis.
-- 4x Ping pong balls -to serve as mold for pouring resin to manufacture eyes.
-- 1x Epoxy Resin Kit.
-- Paints and brushes -for painting resin.
-- Red thread -for veins on eyes.
-- Blue Tack -for non-permanent fixings.
-- Colored adhesive tape -to label cables by type (e.g., power, motors, servos, audio, etc.).
-- Super Glue-3 to join SG-90's servo horn (pressure-fitted to it) to vertical rotation cylinder -noting that with this design the servo is replaceable, being pressure-detachable from horn.
+- 2x wheels - one for each gearbox motor
+- 2x metal motor mounts - to secure each motor to the chassis using four screws (two horizontal, two vertical)
+- 1x caster wheel (approximately 3cm diameter) - for the robot's central rear support
+- 1x wooden board or particleboard (approximately 40x40x0.3cm) - for the main chassis
+- 1x wooden board (approximately 11x4x0.8cm) - for eye movement support structures
+- M3 hexagonal spacers (approximately 4cm length) - to separate chassis levels
+- M3 screws (approximately 1.5cm length) - both headed and headless (double-threaded)
+- M3 washers
+- M3 nuts - both standard and self-locking types
+- 2x M2 screws - to mount the OLED display
+- 2x M2 nuts - to secure the OLED display
+- 4x ping pong balls - to serve as molds for the resin eyes
+- 1x epoxy resin kit
+- Paints and brushes - for eye coloring
+- Red thread - for eye vein details
+- Blue Tack - for temporary component mounting
+- Colored adhesive tape - for cable identification by function (power, motors, servos, audio, etc.)
+- Super Glue-3 - to attach the SG-90's servo horn (pressure-fitted) to the vertical rotation cylinder, allowing servo replacement
 
-Similarly, although not part of the robot, the following tools and accessories are used for its manufacture and/or testing:
+Tools and accessories for construction and testing:
 
-- 1x Digital multimeter -for voltage verification.
-- 1x Steel saw -24 TPI- for chassis.
-- Sandpaper -for chassis.
-- 1x Drill Kit -with M3 size.
-- 1x Soldering Kit -for soldering pins to INMP441 and MAX98357A.
-- Pliers and wire strippers.
-- Screwdrivers.
-- 1x C-clamp -for holding during cutting.
-- 1x Measuring tape.
-- 1x Scissors.
-- 1x Printer and paper- to print eye iris and ESP32-CAM calibration pattern.
+- 1x digital multimeter - for voltage testing
+- 1x steel saw (24 TPI) - for chassis cutting
+- Sandpaper - for chassis finishing
+- 1x drill kit - with M3 bits
+- 1x soldering kit - for the INMP441 and MAX98357A pin connections
+- Pliers and wire strippers
+- Screwdrivers
+- 1x C-clamp - for secure cutting
+- 1x measuring tape
+- 1x scissors
+- 1x printer and paper - for eye iris patterns and ESP32-CAM calibration charts
 
-And finally, for robot operation, the following is required:
+Required for operation:
 
-- 1x Computer -with adequate specifications for LLM.
-- 1x Router for internet access and/or phone with hotspot, to connect 2x ESP32-CAM, ESP32-WROVER and computer to the same network, as well as for internet access (necessary depending on functions callable by LLM, such as internet search).
-- 1x USB-A to Serial converter (for uploading code to some ESP32-CAM models, like Ai-Thinker) or USB-A to USB-C Cable (for other models, like M5Stack Wide).
-- 1x USB A to USB B cable -for flashing code to Arduino Uno.
-- 1x USB A to micro-USB cable -for recharging 7.4V battery.
-- 1x AA battery charger.
+- 1x computer - with specifications suitable for running the LLM
+- 1x router or phone hotspot - to network the ESP32-CAMs, ESP32-WROVER, and computer, and provide - internet access for LLM functions
+- 1x USB-A to Serial converter - for Ai-Thinker ESP32-CAM programming, or USB-A to USB-C cable for M5Stack Wide
+- 1x USB-A to USB-B cable - for Arduino Uno programming
+- 1x USB-A to micro-USB cable - for the 7.4V battery charging
+- 1x AA battery charger
