@@ -218,10 +218,10 @@ On the ESP32 side, to allow them to communicate with your computer in your local
 
 ```
 
-const char* ssid1 = "\*\*\*\*"; // Your network's name
-const char* password1 = "\*_\*\*"; // Your network's password
-IPAddress staticIP1(_, _, _, _); // Your ESP32's (desired) IP on the network
-IPAddress gateway1(_, _, _, \*); // Your router's local gateway IP
+const char* ssid1 = "***"; // Your network's name
+const char* password1 = "***"; // Your network's password
+IPAddress staticIP1(*, *, *, *); // Your ESP32's (desired) IP on the network
+IPAddress gateway1(*, *, *, *); // Your router's local gateway IP
 
 ```
 
@@ -231,10 +231,10 @@ Replace:
 
 ```
 
-const char* ssid2 = "\*\*\*\*";
-const char* password2 = "\*_\*\*";
-IPAddress staticIP2(_, _, _, _);
-IPAddress gateway2(_, _, _, \*);
+const char* ssid2 = "***";
+const char* password2 = "***";
+IPAddress staticIP2(*, *, *, *);
+IPAddress gateway2(*, *, *, *);
 
 ```
 
@@ -244,7 +244,7 @@ And in the case of the ESP32-WROVER, replace:
 
 ```
 
-const char* websocket_server_host1 = "*._._.\*";
+const char* websocket_server_host1 = "*.*.*.*";
 
 ```
 
@@ -254,7 +254,7 @@ And:
 
 ```
 
-const char* websocket_server_host2 = "*._._.\*";
+const char* websocket_server_host2 = "*.*.*.*";
 
 ```
 
