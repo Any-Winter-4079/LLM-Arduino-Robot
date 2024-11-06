@@ -2,7 +2,7 @@ Since different tasks (such as face recognition, depth estimation, etc.) may req
 
 Therefore, it's necessary to find a size and quality - which ultimately affect the cameras' frame rate - that can offer the best compromise for the robot according to the task it faces, and for this, it's decided to include, as briefly mentioned earlier, an endpoint, /camera_config, in the ESP32-CAMs, to allow programmatically changing size and quality when necessary. Note that other parameters, such as clock speed or number of buffers, could also be configured in the same way, but after several tests, it's considered sufficient to work with fixed values of 1 buffer and 20MHz clock frequency.
 
-Therefore, and to acquire a better idea of this quality-size compromise in the ESP32-CAMs, the following study is carried out, requesting (synchronously) a total of 1,000 frames for each of the following 30 quality-size combinations (where 4 is higher quality and QVGA smaller size) and calculating their average fetch time, obtaining results between 0.027 and 0.618(s) per image - that is, from ~1.7 to 37 fps - according to quality and size. The complete result of the experiment can be seen in Table 3 for the M5Stack Wide model and in Table 4 for Ai-Thinker, and graphically in Figure 18, observing the frame rate evolution as requested image size and quality increase.
+Therefore, and to acquire a better idea of this quality-size compromise in the ESP32-CAMs, the following study is carried out, requesting (synchronously) a total of 1,000 frames for each of the following 30 quality-size combinations (where 4 is higher quality and QVGA smaller size) and calculating their average fetch time, obtaining results between 0.027 and 0.618(s) per image - that is, from ~1.7 to 37 fps - according to quality and size. The complete result of the experiment can be seen in Table 3 for the M5Stack Wide model and in Table 4 for Ai-Thinker, and graphically in Figure 17, observing the frame rate evolution as requested image size and quality increase.
 
 | JPEG Quality (0-63) → |     4     |     8     |    16     |    32     |    63     |
 | --------------------- | :-------: | :-------: | :-------: | :-------: | :-------: |
@@ -30,5 +30,5 @@ Table 4. Average fetch time after 1000 synchronous iterations (i.e., images) in 
 
 <div align="center">
     <img width="900" alt="Average fetch time plot" src="../images/original/average-fetch-plot.png">
-    <p>Figure 18. Average fetch time for 1000 iterations with 30 ESP32-CAM configurations of M5Stack Wide model, on the left, and Ai-Thinker, on the right, in seconds.</p>
+    <p>Figure 17. Average fetch time for 1000 iterations with 30 ESP32-CAM configurations of M5Stack Wide model, on the left, and Ai-Thinker, on the right, in seconds.</p>
 </div>
