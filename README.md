@@ -21,7 +21,7 @@
 - [Chassis and motors](guides/02_chassis_and_motors.md): Step-by-step instructions
 - [Vision and eye movement](guides/03_vision_and_eye_movement.md): Step-by-step instructions
 - [Audio capture and playback](guides/04_audio_capture_and_playback.md): Step-by-step instructions
-- [ESP32-CAM frame rate](guides/05_esp32_cam_frame_rate_study.md): Study
+- [ESP32-CAM frame rate study](guides/05_esp32_cam_frame_rate_study.md): Quality-size fps study
 
 ## Description
 
