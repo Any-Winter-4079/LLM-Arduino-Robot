@@ -14,11 +14,12 @@
 
 </div>
 
-## Guides with Diagrams
+## How it's made
 
-- [Connections](guides/00_connections.md)
-- [Components](guides/01_components.md)
-- [Chassis and motors](guides/02_chassis_and_motors.md)
+- [00 Connections (Fritzing diagram)](guides/00_connections.md)
+- [01 Components (List)](guides/01_components.md)
+- [02 Chassis and motors (Step-by-step instructions)](guides/02_chassis_and_motors.md)
+- [03 Vision and eye movement (Step-by-step instructions)](guides/03_vision_and_eye_movement.md)
 
 ## Description
 
