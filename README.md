@@ -23,16 +23,6 @@
 - [Audio capture and playback](guides/04_audio_capture_and_playback.md): Step-by-step instructions
 - [ESP32-CAM frame rate study](guides/05_esp32_cam_frame_rate_study.md): Quality-size fps study
 
-## Quick communication diagrams
-
-Motor (top left), Audio (top right) and Servo and Cameras (bottom left) communication diagrams (with more details on 'How it's made' guides)
-
-<div align="left">
-    <img height="225" alt="Motor communication summary" src="images/original/motors-communication-summary.png">
-    <img height="225" alt="Audio communication summary" src="images/original/audio-communication-summary.png">
-    <img width="325" alt="Servos communication summary" src="images/original/servos-and-cameras-communication-summary.png">
-</div>
-
 ## Description
 
 [Missing description]
@@ -300,6 +290,16 @@ Lastly, on the Arduino side, flash (through its USB type B) `arduino/production.
 ## Usage
 
 [Missing usage]
+
+## Quick communication diagrams
+
+Motor (top left), Audio (top right) and Servo and Cameras (bottom left) communication diagrams (with more details on 'How it's made' guides)
+
+<div align="left">
+    <img height="225" alt="Motor communication summary" src="images/original/motors-communication-summary.png">
+    <img height="225" alt="Audio communication summary" src="images/original/audio-communication-summary.png">
+    <img width="325" alt="Servos communication summary" src="images/original/servos-and-cameras-communication-summary.png">
+</div>
 
 ## License
 
