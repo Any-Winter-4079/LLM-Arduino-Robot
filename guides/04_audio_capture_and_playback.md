@@ -15,7 +15,7 @@ Schematically, the communication summary between the different components for au
     <p>Figure 16. Communication summary between computer, ESP32-WROVER, KY-037, INMP441, MAX98357A, and speaker for sound detection, sending it to the computer (where it's converted to text using Speech-to-Text, to serve as input to the language model and whose speech response part is converted to audio with Text-to-Speech), receiving stop signal, and sending audio back, to be played by the robot's speaker.</p>
 </div>
 
-Finally, it's worth noting that for Speech-to-Text and Text-to-Speech processes, whisper-tiny (with HuggingFace Transformers) and your_tts (with coqui-ai/TTS, cloning a CC0-licensed voice - No Copyright - from FreeSound) are used, respectively, after testing four model variants for Speech-to-Text (whisper-tiny, whisper-small, whisper-medium, and whisper-large-v2) and 4 variants for Text-to-Speech (xtts_v2, your_tts, tortoise-v2, and speedy-speech).
+Finally, it's worth noting that for Speech-to-Text and Text-to-Speech processes, whisper-tiny (with HuggingFace Transformers) and your_tts (with coqui-ai/TTS, cloning a CC0-licensed voice - No Copyright - from [FreeSound](https://freesound.org/)) are used, respectively, after testing four model variants for Speech-to-Text (whisper-tiny, whisper-small, whisper-medium, and whisper-large-v2) and 4 variants for Text-to-Speech (xtts_v2, your_tts, tortoise-v2, and speedy-speech).
 
 Tables 1 and 2 show a brief summary of experiments on the following audios/texts (randomly taken from the internet), in versions with low and high volume and short and longer duration for the different Speech-to-Text and Text-to-Speech models considered for the robot.
 
