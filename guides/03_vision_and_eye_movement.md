@@ -38,7 +38,7 @@ On the other hand, and for right-to-left movement, another SG-90 servo is fixed 
 <div align="center">
     <img height="500" alt="Robot eyes view 1" src="../images/original/eyes-view-1.png">
     <img height="500" alt="Robot eyes view 2" src="../images/original/eyes-view-2.png">
-<p>Figure 14. Robot eye movement mechanism.</p>
+    <p>Figure 14. Robot eye movement mechanism.</p>
 </div>
 
 After creating the movement mechanism, the next step is to connect the pins of the 2 OV2640s - inserted through the eye - to their corresponding ESP32-CAM (in this case, M5Stack Wide for the right eye and Ai-Thinker for the left), placed on the upper level of the second chassis level (below the eyes themselves) with Blue Tack.
@@ -62,6 +62,6 @@ With ESP32-CAMs and SG-90s powered, and finally, updated versions of the sketche
 This way, and adding the main endpoint, /image.jpg (in this case, accessible at http://192.168.1.180:80/image.jpg for the right eye and http://192.168.1.181:80/image.jpg for the left eye), it allows, on demand from the computer, obtaining the image captured by the ESP32-CAM through HTTP GET request, and reusing the previous WROVER endpoint (/handleCommand), and once the image (or pair of images, making an HTTP GET request to each ESP32-CAM) is obtained, and after processing them by the language model, the order of a new eye position to the robot, sending it to the WROVER through HTTP POST request, which in turn receives it, processes it, and sends it through pin 13 (Tx with HardwareSerial) to the Arduino which similarly processes it and sends it through pins 9 and A0 (connected to SIGNAL of each SG-90) to the servos responsible for vertical and horizontal eye movement, as can be seen in more detail in Figure 15.
 
 <div align="center">
-    <img width="500" alt="Servos communication summary" src="../images/original/servos-communication-summary.png">
+    <img width="500" alt="Servos communication summary" src="../images/original/servos-and-cameras-communication-summary.png">
     <p>Figure 15. Communication summary between computer, ESP32-WROVER, Arduino Uno, ESP32-CAMs, and SG-90s, for obtaining images from ESP32-CAMs and controlling the robot's eyes through commands sent from the computer (where the language model runs and whose commands are parsed to send the corresponding movement order, if any, to the robot).</p>
 </div>
