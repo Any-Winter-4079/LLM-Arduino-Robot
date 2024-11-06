@@ -25,12 +25,12 @@
 
 ## Quick communication diagrams
 
-Motor (top left), Audio (top right) and Servo and Cameras (bottom left) communication diagrams (with more details on 'How it's made' guides)
+Motor, Audio, and Servo and Cameras communication diagrams (with more details on 'How it's made' guides)
 
 <div align="left">
-    <img height="225" alt="Motor communication summary" src="images/original/motors-communication-summary.png">
-    <img height="225" alt="Audio communication summary" src="images/original/audio-communication-summary.png">
-    <img width="325" alt="Servos communication summary" src="images/original/servos-and-cameras-communication-summary.png">
+    <img height="200" alt="Motor communication summary" src="images/original/motors-communication-summary.png">
+    <img height="200" alt="Audio communication summary" src="images/original/audio-communication-summary.png">
+    <img width="300" alt="Servos communication summary" src="images/original/servos-and-cameras-communication-summary.png">
 </div>
 
 ## Description
