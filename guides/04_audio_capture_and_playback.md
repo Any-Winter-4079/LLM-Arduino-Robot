@@ -48,9 +48,7 @@ Tables 1 and 2 show a brief summary of experiments on the following audios/texts
 | whisper-large-v2 | Short and low volume | 6.01           | Yes                |
 | whisper-large-v2 | Long and high volume | 11.27          | Yes                |
 
-<div align="center">
-  <p>Table 1. Summary of experiment results on 4 Whisper models for Speech-to-Text under 2 types of audio - short and low volume and long and high volume.</p>
-</div>
+Table 1. Summary of experiment results on 4 Whisper models for Speech-to-Text under 2 types of audio - short and low volume and long and high volume.
 
 | Model         | Text Version | Time (seconds) | Real-time Factor (seconds) | Correct Conversion | Notes                                                             |
 | ------------- | ------------ | -------------- | -------------------------- | ------------------ | ----------------------------------------------------------------- |
@@ -63,6 +61,4 @@ Tables 1 and 2 show a brief summary of experiments on the following audios/texts
 | speedy-speech | Short        | 0.13           | 0.08                       | Yes                | Sound with Asian accent and slight robotic touch                  |
 | speedy-speech | Long         | 0.64           | 0.06                       | Yes                | Sound with Asian accent and slight robotic touch                  |
 
-<div align="center">
-  <p>Table 2. Summary of experiment results on 4 coqui-ai/TTS models for Text-to-Speech under 2 types of text - short and long.</p>
-</div>
+Table 2. Summary of experiment results on 4 coqui-ai/TTS models for Text-to-Speech under 2 types of text - short and long.
