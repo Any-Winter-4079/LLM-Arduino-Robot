@@ -16,10 +16,10 @@
 
 ## How it's made
 
-- [00 Connections (Fritzing diagram)](guides/00_connections.md)
-- [01 Components (List)](guides/01_components.md)
-- [02 Chassis and motors (Step-by-step instructions)](guides/02_chassis_and_motors.md)
-- [03 Vision and eye movement (Step-by-step instructions)](guides/03_vision_and_eye_movement.md)
+- [Connections](guides/00_connections.md): Fritzing diagram
+- [Components](guides/01_components.md): List
+- [Chassis and motors](guides/02_chassis_and_motors.md): Step-by-step instructions
+- [Vision and eye movement](guides/03_vision_and_eye_movement.md): Step-by-step instructions
 
 ## Description
 
