@@ -29,6 +29,6 @@ Table 3. Average fetch time after 1000 synchronous iterations (i.e., images) in 
 Table 4. Average fetch time after 1000 synchronous iterations (i.e., images) in 30 different Ai-Thinker model ESP32-CAM configurations, in seconds.
 
 <div align="center">
-    <img width="900" alt="Audio communication summary" src="../images/original/average-fetch-plot.png">
+    <img width="900" alt="Average fetch time plot" src="../images/original/average-fetch-plot.png">
     <p>Figure 18. Average fetch time for 1000 iterations with 30 ESP32-CAM configurations of M5Stack Wide model, on the left, and Ai-Thinker, on the right, in seconds.</p>
 </div>

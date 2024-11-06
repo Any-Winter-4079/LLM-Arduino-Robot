@@ -4,8 +4,8 @@ In this case, two levels (or floors) were chosen, using a wooden or particleboar
 
 <div align="center">
     <img height="250" alt="Template used" src="../images/original/template-1.png">
-    <img height="250" alt="Template used" src="../images/original/template-2.png">
-<p>Figure 2. Template used for cutting each chassis level, from ELEGOO Smart Robot Car Kit V4.0, on the left, and view of 2 chassis levels joined by hexagonal spacers, noting the wheel positions - where the 2 DC motors would be fitted, which are screwed to the lower chassis - in the spaces specifically left for them, on the right.</p>
+    <img height="250" alt="View of 2 chassis levels" src="../images/original/template-2.png">
+    <p>Figure 2. Template used for cutting each chassis level, from ELEGOO Smart Robot Car Kit V4.0, on the left, and view of 2 chassis levels joined by hexagonal spacers, noting the wheel positions - where the 2 DC motors would be fitted, which are screwed to the lower chassis - in the spaces specifically left for them, on the right.</p>
 </div>
 
 <div align="center">
