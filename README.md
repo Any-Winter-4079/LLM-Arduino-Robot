@@ -141,61 +141,6 @@ Or manually install the main dependencies using the `venv-pip-install.txt` comma
 Additionally, `tts-constraints.txt` makes installing coqui-ai's TTS easier by fixing dependency versions.
 So, if `pip install TTS` hangs, try `pip install TTS -c tts-constraints.txt`
 
-And finally, get and build `llama-cpp` to run the LLM brain:
-
-```
-cd computer/llm
-git clone https://github.com/ggerganov/llama.cpp
-make -j 8
-```
-
-Be on the same commit if you want to:
-
-```
-git checkout 6b844735
-```
-
-Install the `llama-cpp` dependencies:
-
-```
-pip install -r requirements.txt
-```
-
-And re-install nightly torch if `llama.cpp` changed the version and you want to use torch nightly:
-
-```
-pip uninstall torch torchvision torchaudio
-pip install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
-```
-
-Download your HuggingFace models into `computer/llm/hf_models/`
-
-Ensure the output directory exists, for example:
-
-```
-mkdir -p models/meta-llama/Llama-3.2-1B
-```
-
-Convert the downloaded model to `gguf`, for example:
-
-```
-python convert_hf_to_gguf.py ../hf_models/meta-llama/Llama-3.2-1B --outfile models/meta-llama/Llama-3.2-1B/
-```
-
-And quantize the model if appropriate, for example:
-
-```
-./llama-quantize models/meta-llama/Llama-3.2-1B/Llama-3.2-1B-F16.gguf models/meta-llama/Llama-3.2-1B/Llama-3.2-1B-Q4_K_M.gguf Q4_K_M
-```
-
-Using:
-
-```
-./llama-quantize -h
-```
-
-to find the allowed quantization types
-
 ### Robot
 
 For the robot, install the Arduino IDE (for example, v2.3.2) on the computer, and then:
