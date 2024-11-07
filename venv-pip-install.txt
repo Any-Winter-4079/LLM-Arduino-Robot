@@ -6,5 +6,6 @@ pip install pydub
 pip install deepface
 pip install ultralytics
 pip install TTS -c tts-constraints.txt
+pip install openai
 pip uninstall torch torchvision torchaudio
-pip install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
+pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
