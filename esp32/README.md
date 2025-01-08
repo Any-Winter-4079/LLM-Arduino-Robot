@@ -30,3 +30,24 @@ The ESP32 components handle image capturing, audio processing, and communication
   2. Enable "Maximize Compatibility"
   3. Power on robot
   4. Connect computer to hotspot
+
+## Dependencies
+
+Required libraries (to place in `Arduino/libraries/`):
+
+- https://github.com/espressif/esp32-camera
+- https://github.com/me-no-dev/AsyncTCP
+- https://github.com/me-no-dev/ESPAsyncWebServer
+
+For example in:
+
+```
+Users/you/Documents/Arduino/libraries/esp32-camera-master
+Users/you/Documents/Arduino/libraries/AsyncTCP
+Users/you/Documents/Arduino/libraries/ESPAsyncWebServer-master
+```
+
+## Credits
+
+The AsyncBufferResponse, AsyncFrameResponse and sendJpg() code that (together with ESPAsyncWebServer) enabled **stable** (i.e., not out-of-order) images up to 37 fps is from:
+https://gist.github.com/me-no-dev/d34fba51a8f059ac559bf62002e61aa3
