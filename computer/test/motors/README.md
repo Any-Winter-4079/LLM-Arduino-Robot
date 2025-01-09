@@ -2,7 +2,7 @@
 
 ## Computer Setup
 
-- Define in this line whether the robot and computer will share the phone hotspot (True) or the home WiFi (False) as the common network for communication (e.g. sending and receiving of commands):
+- Define in this line whether the robot and computer will share the phone hotspot (True) or the home WiFi (False) as the common network for communication (e.g., sending and receiving of commands):
 
 ```
 USE_HOTSPOT = True
@@ -16,7 +16,7 @@ IP = "172.20.10.12" if USE_HOTSPOT else "192.168.1.182"
 
 ## ESP32 Setup
 
-- Make sure `esp32/wrover/production.ino` has been uploaded to the WROVER to receive the servo commands on the `/command` endpoint (e.g., `http://172.20.10.12/command`) and forward them to the Arduino.
+- Make sure `esp32/wrover/production.ino` has been uploaded to the WROVER to receive the motor commands on the `/command` endpoint (e.g., `http://172.20.10.12/command`) and forward them to the Arduino.
 
 ## Arduino Setup
 

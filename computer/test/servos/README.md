@@ -2,7 +2,7 @@
 
 ## Computer Setup
 
-- Define in this line whether the robot and computer will share the phone hotspot (True) or the home WiFi (False) as the common network for communication (e.g. sending and receiving of commands):
+- Define in this line whether the robot and computer will share the phone hotspot (True) or the home WiFi (False) as the common network for communication (e.g., sending and receiving of commands):
 
 ```
 USE_HOTSPOT = True
