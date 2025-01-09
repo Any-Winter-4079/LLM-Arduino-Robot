@@ -12,7 +12,7 @@ The ESP32 components handle image capturing, audio processing, and communication
   - Receives movement commands from LLM-brain on computer and forwards them to Arduino
   - Sends (captured) human speech to LLM-brain on computer and receives returning (LLM) speech
 
-## Camera Setup
+## ESP32 Setup
 
 - Define in these lines your home WiFi' and phone hotspot's SSID and password:
 
