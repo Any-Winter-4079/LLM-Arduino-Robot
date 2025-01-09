@@ -17,7 +17,7 @@
 // Primary network configuration (Home WiFi)
 const char* ssid1 = "";                     // Home WiFi's SSID
 const char* password1 = "";                 // Home WiFi's password
-IPAddress staticIP1(192, 168, 1, 180);     // Static IP for home network
+IPAddress staticIP1(192, 168, 1, 180);      // Static IP for home network
 IPAddress gateway1(192, 168, 1, 1);         // Gateway for home network
 IPAddress subnet1(255, 255, 255, 0);        // Subnet mask
 

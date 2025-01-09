@@ -14,6 +14,18 @@ The ESP32 components handle image capturing, audio processing, and communication
 
 ## Camera Setup
 
+- Define in these lines your home WiFi' and phone hotspot's SSID and password:
+
+```
+const char* ssid1 = "";                     // Home WiFi's SSID
+const char* password1 = "";                 // Home WiFi's password
+```
+
+```
+const char* ssid2 = "";                     // Phone hotspot's SSID
+const char* password2 = "";                 // Phone hotspot's password
+```
+
 - Code upload requires either USB-C port or USB-to-serial adapter with:
   - FTDI 5V → ESP32-CAM 5V (FTDI set to 3.3V)
   - FTDI GND → ESP32-CAM GND
