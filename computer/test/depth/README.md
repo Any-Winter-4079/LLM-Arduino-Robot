@@ -25,15 +25,10 @@ LEFT_EYE_IP = "172.20.10.11" if USE_HOTSPOT else "192.168.1.181"
 
 ```
 depth
-
 ├── depth_anything
-
-    ├── depth_anything
-
-        ├── dpt.py
-
-    └── run.py
-
+│   ├── depth_anything
+│   │   ├── dpt.py
+│   └── run.py
 ├── calculate_depth_with_depth_anything.py
 ```
 
