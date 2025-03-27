@@ -1,50 +1,41 @@
 # Notes on the `undistortion_and_rectification/` code:
 
-## Stereo Image Processing System
+## Configuration
 
-This script performs undistortion and rectification of calibrated stereo camera images to prepare them for depth perception.
+- The script uses these paths:
 
-## Features
+```
+LEFT_EYE_IMAGES_DIR = '../calibration/images/left_eye'
+RIGHT_EYE_IMAGES_DIR = '../calibration/images/right_eye'
+OUTPUT_DIR = './images/undistorted_and_rectified_calibration_images'
+STEREO_MAPS_DIR = './stereo_maps'
+```
 
-- Fisheye lens distortion correction
-- Stereo image rectification for epipolar alignment
-- Rectification map generation and storage
-- Batch processing of calibration images
-- Side-by-side visualization of rectified pairs
+- Calibration parameters are loaded from:
 
-## Directory Structure
-
-- `./images/undistorted_and_rectified_calibration_images/`: Output directory for processed image pairs
-- `./stereo_maps/`: Storage location for generated rectification maps
-
-## Dependencies
-
-The script requires:
-
-- OpenCV (cv2)
-- NumPy
-- Previously generated calibration parameters from `calibration/parameters/`
+```camera_matrix_left = np.load('../calibration/parameters/camera_matrix_left_eye.npy')
+dist_coeffs_left = np.load('../calibration/parameters/distortion_coeffs_left_eye.npy')
+camera_matrix_right = np.load('../calibration/parameters/camera_matrix_right_eye.npy')
+dist_coeffs_right = np.load('../calibration/parameters/distortion_coeffs_right_eye.npy')
+R = np.load('../calibration/parameters/rotation_matrix.npy')
+T = np.load('../calibration/parameters/translation_vector.npy')
+```
 
 ## Process Flow
 
-1. **Load Calibration Parameters**:
+- The script performs these operations:
 
-- Camera matrices
-- Distortion coefficients
-- Rotation matrix
-- Translation vector
+- Initializes stereo rectification using the fisheye camera model
+- Saves the rectification maps for future use
+- Processes each image pair:
 
-2. **Initialize Rectification**:
+  - Applies undistortion and rectification
+  - Combines images side-by-side
+  - Saves the resulting images
 
-- Calculate rectification transforms
-- Generate undistortion maps for both cameras
+## Notes
 
-3. **Process Images**:
-
-- Apply undistortion and rectification to all image pairs
-- Create side-by-side visualizations
-- Save processed images and rectification maps
-
-## Usage
-
-Simply run the script:
+- Uses zero disparity setting for better results with parallel cameras
+- Includes commented-out code for adding horizontal lines to visualize epipolar alignment
+- Rectification maps are saved separately to avoid recomputation for real-time applications
+- Expects input images in JPG format from both left and right cameras
