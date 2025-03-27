@@ -1,4 +1,4 @@
-pip install tensorflow-macos
+pip install tensorflow-macos==2.14.0
 pip install tensorflow-metal
 pip install requests
 pip install websockets
@@ -10,3 +10,4 @@ pip install openai
 pip uninstall torch torchvision torchaudio
 pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
 pip install mediapipe
+pip install facenet-pytorch
