@@ -9,3 +9,4 @@ pip install TTS -c tts-constraints.txt
 pip install openai
 pip uninstall torch torchvision torchaudio
 pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
+pip install mediapipe
