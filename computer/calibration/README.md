@@ -1,14 +1,30 @@
 # Notes on the `calibration/` code:
 
-# Camera Calibration System
-
-This system captures and calibrates stereo images from dual ESP32-CAMs with fisheye lenses for 3D vision.
-
 ## Hardware Setup
 
 - **Left Eye**: AI-Thinker ESP32-CAM
 - **Right Eye**: M5Stack Wide ESP32-CAM
 - **Camera Sensors**: OV2640 with fisheye lenses (using 7.5cm cables)
+
+## Computer Setup
+
+- Define in this line whether the robot and computer will share the phone hotspot (True) or the home WiFi (False) as the common network for communication:
+
+```
+USE_HOTSPOT = True
+```
+
+- Define in these lines the ESP32-CAMs' IPs the phone hotspot or home WiFi will assign:
+
+```
+IP_LEFT = "172.20.10.11" if USE_HOTSPOT else "192.168.1.181"  # Left eye (AI-Thinker ESP32-CAM)
+IP_RIGHT = "172.20.10.10" if USE_HOTSPOT else "192.168.1.180"  # Right eye (M5Stack Wide ESP32-CAM)
+```
+
+## ESP32 Setup
+
+- Ensure both ESP32-CAMs are properly flashed with firmware that exposes the image endpoints
+- Verify cameras are accessible at their respective IP addresses before running the script
 
 ## Capture Process
 
