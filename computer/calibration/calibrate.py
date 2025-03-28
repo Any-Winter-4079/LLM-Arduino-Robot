@@ -14,7 +14,6 @@ import re
 import cv2
 import glob
 import numpy as np
-from typing import Dict, List, Optional, Tuple, Any, Union
 
 # Chessboard configuration
 SQUARE_SIZE = 2.45                 # Square size in centimeters
@@ -31,7 +30,7 @@ imgpoints_left = []     # 2D points in left image plane
 imgpoints_right = []    # 2D points in right image plane
 
 
-def extract_timestamp(filename: str) -> Optional[str]:
+def extract_timestamp(filename):
     """
     Extracts timestamp from image filename
     
@@ -45,8 +44,7 @@ def extract_timestamp(filename: str) -> Optional[str]:
     return match.group(0) if match else None
 
 
-def show_side_by_side(img1: np.ndarray, img2: np.ndarray, window_name: str = 'Side-by-side', 
-                      display_time: int = 500) -> None:
+def show_side_by_side(img1, img2, window_name='Side-by-side', display_time=500):
     """
     Displays two images side by side temporarily
     
@@ -62,7 +60,7 @@ def show_side_by_side(img1: np.ndarray, img2: np.ndarray, window_name: str = 'Si
     cv2.destroyAllWindows()
 
 
-def save_side_by_side(img1: np.ndarray, img2: np.ndarray, filename: str, output_dir: str) -> None:
+def save_side_by_side(img1, img2, filename, output_dir):
     """
     Saves two images concatenated side by side
     
@@ -76,7 +74,7 @@ def save_side_by_side(img1: np.ndarray, img2: np.ndarray, filename: str, output_
     cv2.imwrite(os.path.join(output_dir, filename), combined_image)
 
 
-def process_image_pairs() -> Tuple[Tuple[int, int], List[np.ndarray], List[np.ndarray], List[np.ndarray]]:
+def process_image_pairs():
     """
     Processes stereo image pairs to find and validate chessboard corners
     
@@ -154,10 +152,7 @@ def process_image_pairs() -> Tuple[Tuple[int, int], List[np.ndarray], List[np.nd
     return grayL.shape[::-1], objpoints_reshaped, imgpoints_left_formatted, imgpoints_right_formatted
 
 
-def calibrate_cameras(img_size: Tuple[int, int], 
-                      objpoints: List[np.ndarray], 
-                      imgpoints_left: List[np.ndarray], 
-                      imgpoints_right: List[np.ndarray]) -> Optional[Dict[str, np.ndarray]]:
+def calibrate_cameras(img_size, objpoints, imgpoints_left, imgpoints_right):
     """
     Performs intrinsic and stereo calibration of the cameras
     
@@ -223,7 +218,7 @@ def calibrate_cameras(img_size: Tuple[int, int],
     return calibration
 
 
-def save_calibration(calibration: Dict[str, np.ndarray]) -> None:
+def save_calibration(calibration):
     """
     Saves calibration parameters to files
     
@@ -246,7 +241,7 @@ def save_calibration(calibration: Dict[str, np.ndarray]) -> None:
     np.save('parameters/fundamental_matrix.npy', calibration['F'])
 
 
-def main() -> None:
+def main():
     """
     Main calibration process:
     1. Process image pairs and detect chessboard corners
