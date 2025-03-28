@@ -16,7 +16,6 @@ import threading
 import numpy as np
 import urllib.request
 from datetime import datetime
-from typing import List, Optional
 
 # Network configuration
 USE_HOTSPOT = False  # True for phone hotspot, False for home WiFi
@@ -42,7 +41,7 @@ FRAME_INTERVAL = 3  # Seconds to wait between frames (time to press 's')
 NUM_IMAGES = 100  # Total number of image pairs to attempt capturing
 
 
-def update_camera_config(esp32_config_url: str, jpeg_quality: int, frame_size: str) -> None:
+def update_camera_config(esp32_config_url, jpeg_quality, frame_size):
     """
     Updates ESP32-CAM configuration via HTTP POST request
     
@@ -61,7 +60,7 @@ def update_camera_config(esp32_config_url: str, jpeg_quality: int, frame_size: s
         print(f"Error sending configuration request: {e}")
 
 
-def fetch_image(url: str, queue: List[Optional[np.ndarray]]) -> None:
+def fetch_image(url, queue):
     """
     Fetches a camera image in a separate thread
     
@@ -79,8 +78,7 @@ def fetch_image(url: str, queue: List[Optional[np.ndarray]]) -> None:
         queue.append(None)
 
 
-def capture_stereo_images(url_left: str, url_right: str, 
-                          save_path_left: str, save_path_right: str) -> bool:
+def capture_stereo_images(url_left, url_right, save_path_left, save_path_right):
     """
     Captures and optionally saves synchronized image pairs from both cameras
     
@@ -130,7 +128,7 @@ def capture_stereo_images(url_left: str, url_right: str,
     return False
 
 
-def main() -> None:
+def main():
     """
     Main execution function:
     1. Creates storage directories if needed
