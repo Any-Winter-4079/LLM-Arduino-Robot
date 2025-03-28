@@ -9,7 +9,6 @@ Features:
 """
 
 import requests
-from typing import Dict, Union
 
 # Network configuration
 USE_HOTSPOT = True                                         # True for phone hotspot, False for home WiFi
@@ -21,7 +20,7 @@ UP_ANGLE = 110     # Highest vertical position
 LEFT_ANGLE = 120   # Leftmost position
 RIGHT_ANGLE = 60   # Rightmost position
 
-def move_servos(ip: str, angle_vp: int, angle_hp: int) -> Dict[str, Union[bool, str]]:
+def move_servos(ip, angle_vp, angle_hp):
    """
    Sends HTTP POST request to ESP32-WROVER to move servos to specified angles
    

@@ -8,15 +8,13 @@ Features:
 - Network communication with ESP32-WROVER
 - Error handling for network and input issues
 """
-
 import requests
-from typing import Dict, Union
 
 # Network configuration 
 USE_HOTSPOT = True                                         # True for phone hotspot, False for home WiFi
 IP = "172.20.10.12" if USE_HOTSPOT else "192.168.1.182"    # ESP32-WROVER's IP address
 
-def move_motors(ip: str, left_direction: str, right_direction: str, speed: int) -> Dict[str, Union[bool, str]]:
+def move_motors(ip, left_direction, right_direction, speed):
    """
    Sends HTTP POST request to ESP32-WROVER to control motors
    
@@ -31,7 +29,6 @@ def move_motors(ip: str, left_direction: str, right_direction: str, speed: int) 
            '01': backward  
            '00': stop
        speed: Motor speed (0-255)
-
    Returns:
        Dictionary containing:
        - success: True if request succeeded, False otherwise
@@ -59,7 +56,6 @@ def get_user_input():
        tuple: (left_direction, right_direction, speed)
            left_direction, right_direction: '10', '01', or '00' 
            speed: 0-255
-
    Raises:
        ValueError: If directions or speed are invalid
        SystemExit: If user enters 'exit' 
