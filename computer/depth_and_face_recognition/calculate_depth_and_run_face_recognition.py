@@ -26,7 +26,7 @@ from deepface import DeepFace
 # Configuration
 JPEG_QUALITY = 12                # 0-63 lower means higher quality
 FRAME_SIZE = "FRAMESIZE_VGA"     # 640x480 resolution
-USE_HOTSPOT = True
+USE_HOTSPOT = False
 RIGHT_EYE_IP = "172.20.10.10" if USE_HOTSPOT else "192.168.1.180"
 LEFT_EYE_IP = "172.20.10.11" if USE_HOTSPOT else "192.168.1.181"
 STREAM_TIMEOUT = 3               # seconds
