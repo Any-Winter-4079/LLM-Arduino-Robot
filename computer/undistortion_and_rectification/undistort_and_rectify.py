@@ -13,7 +13,6 @@ import os
 import cv2
 import glob
 import numpy as np
-from typing import Tuple, Dict, List, Any, Optional
 
 # Configuration paths
 LEFT_EYE_IMAGES_DIR = '../calibration/images/left_eye'                  # Source directory for left camera images
@@ -31,14 +30,14 @@ T = np.load('../calibration/parameters/translation_vector.npy')
 
 
 def initialize_stereo_rectification(
-    image_size: Tuple[int, int],
-    camera_matrix_left: np.ndarray,
-    dist_coeffs_left: np.ndarray,
-    camera_matrix_right: np.ndarray,
-    dist_coeffs_right: np.ndarray,
-    R: np.ndarray,
-    T: np.ndarray
-) -> Tuple[Tuple[np.ndarray, np.ndarray], Tuple[np.ndarray, np.ndarray], np.ndarray]:
+    image_size,
+    camera_matrix_left,
+    dist_coeffs_left,
+    camera_matrix_right,
+    dist_coeffs_right,
+    R,
+    T
+):
     """
     Performs stereo rectification and initializes rectification maps
     
@@ -79,11 +78,11 @@ def initialize_stereo_rectification(
 
 
 def save_stereo_maps(
-    stereoMapL: Tuple[np.ndarray, np.ndarray],
-    stereoMapR: Tuple[np.ndarray, np.ndarray],
-    Q: np.ndarray,
-    directory: str = STEREO_MAPS_DIR
-) -> None:
+    stereoMapL,
+    stereoMapR,
+    Q,
+    directory=STEREO_MAPS_DIR
+):
     """
     Saves stereo rectification maps for future reuse
     
@@ -105,10 +104,10 @@ def save_stereo_maps(
 
 
 def process_images(
-    left_images_dir: str,
-    right_images_dir: str,
-    output_dir: str
-) -> None:
+    left_images_dir,
+    right_images_dir,
+    output_dir
+):
     """
     Processes image pairs with undistortion and rectification
     
@@ -162,7 +161,7 @@ def process_images(
         print(f"Processed and saved {left_img_path} and {right_img_path}")
 
 
-def main() -> None:
+def main():
     """
     Main execution function:
     1. Loads calibration parameters
