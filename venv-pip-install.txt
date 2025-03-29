@@ -14,3 +14,4 @@ pip install facenet-pytorch
 pip install llama_cpp_python==0.2.44
 pip install datasets
 pip install anthropic
+pip install python-dotenv
