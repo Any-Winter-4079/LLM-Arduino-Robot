@@ -25,9 +25,7 @@ from methods.v3.chain_of_thought import run_cot
 from methods.v3.declarative import run_declarative
 from utils.v3.utils import extract_and_format_value, load_exemplars, save_results, select_mode_or_sample
 
-#################
-# Description   #
-#################
+# Description
 # This script tests the LLM on the DATASET dataset using the Chain of Thought, Program-aided Language Models, and Declarative methods.
 # To run the LLM, the script uses the Llama C++ library and the Llama Python wrapper.
 # https://github.com/ggerganov/llama.cpp
