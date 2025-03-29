@@ -1,7 +1,6 @@
 from config.v3.config import MODEL_TEMPLATE, STOP
 from utils.v3.utils import run_llm, extract_and_format_value
 
-# Function to run 0-shot prompting
 def run_zero_shot(question, exemplars, cpp=False, iteration=0):
     """
     Run zero-shot prompting for direct mathematical problem solving.

@@ -5,7 +5,6 @@ import subprocess
 from config.v2.config import PAL_TIMEOUT
 from utils.v2.utils import run_llm, extract_and_format_value
 
-# Function to execute the code with a timeout using the subprocess module
 def run_code_with_subprocess_timeout(code, timeout=PAL_TIMEOUT):
     """
     Execute the PAL-generated Python code with a timeout using the subprocess module.
@@ -39,7 +38,6 @@ def run_code_with_subprocess_timeout(code, timeout=PAL_TIMEOUT):
     finally:
         os.remove(temp_script_name)
 
-# Function to run the Program-aided Language Models (PAL) method
 def run_pal(question, exemplars, cpp=False):
     """
     Run the Program-aided Language Models (PAL) method for mathematical problem solving.

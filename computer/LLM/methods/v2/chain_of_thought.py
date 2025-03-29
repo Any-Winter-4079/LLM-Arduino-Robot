@@ -1,6 +1,5 @@
 from utils.v2.utils import run_llm, extract_and_format_value
 
-# Function to run the Chain of Thought (CoT) method
 def run_cot(question, exemplars, cpp=False):
     """
     Run the Chain of Thought (CoT) reasoning method on a question.

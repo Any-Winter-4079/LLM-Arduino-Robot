@@ -1,7 +1,6 @@
 from config.v3.config import MODEL_TEMPLATE, STOP
 from utils.v3.utils import run_llm, extract_and_format_value
 
-# Function to run the Decider method
 def run_decider(question, exemplars):
     """
     Run the Decider method to select the best answer from multiple candidates.

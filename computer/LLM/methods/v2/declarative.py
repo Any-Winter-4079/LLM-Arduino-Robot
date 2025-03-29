@@ -184,7 +184,6 @@ def get_final_using_sympy(equations):
         return 'bug'
 # (end of) Declarative -> https://github.com/joyheyueya/declarative-math-word-problem.git (adapted)
 
-# Function to run the Declarative method
 def run_declarative(question, exemplars, cpp=False):
     """
     Run the Declarative method for mathematical problem solving.
